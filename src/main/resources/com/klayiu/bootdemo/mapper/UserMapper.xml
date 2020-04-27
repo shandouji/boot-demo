@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//BN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klayiu.bootdemo.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.klayiu.bootdemo.entity.User">
+        <id column="id" property="id"></id>
+        <result column="userName" property="userName"/>
+        <result column="passWord" property="passWord"/>
+        <result column="email" property="email"/>
+        <result column="sex" property="sex"/>
+        <result column="status" property="status"/>
+        <result column="telePhone" property="telePhone"/>
+    </resultMap>
+
+
+
+    <select id="getUserById" resultType="com.klayiu.bootdemo.entity.User">
+        select u.* from User u where u.id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="UserResultMap">
+        select id,userName,passWord,email,sex,status,telePhone from User
+    </select>
+
+
+    <delete id="deleteById" parameterType="String">
+        delete from User where id = #{id}
+    </delete>
+
+    <insert id="add" parameterType="com.klayiu.bootdemo.entity.User">
+       INSERT INTO User VALUES(#{id},#{userName,},#{passWord},#{email},#{sex},#{status},#{telePhone});
+    </insert>
+
+
+    <select id="getName" resultType="com.klayiu.bootdemo.entity.User">
+        select u.* from User u where u.userName = #{userName}
+    </select>
+
+    <select id="getPassWord" resultType="com.klayiu.bootdemo.entity.User">
+      select u.* from User u where u.passWord = #{passWord}
+    </select>
+</mapper>
+    

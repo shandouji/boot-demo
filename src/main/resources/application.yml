@@ -1,0 +1,39 @@
+server:
+  port: 8086
+spring:
+  activiti:
+    # 对true：设置为该值后，Activiti会对数据库中所有的表进行更新，如果表不存在，则Activiti会自动创建。
+    database-schema-update: true
+    # 对于历史数据，存储到何种粒度 , 有四个值，none, activity, audit,full
+    history-level: audit
+    # true 生成历史表 , 如果不配置默认生成17张表 。
+    db-history-used: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/javaboy?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC&nullCatalogMeansCurrent=true
+    username: root
+    password: kdemo
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+logging:
+  level:
+    root: info
+    #输出日志文件
+  file:
+    max-size: 10MB
+    max-history: 7
+    name: paltfrom-demo.log
