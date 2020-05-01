@@ -72,8 +72,6 @@ public class LogAspect {
     @AfterReturning(returning = "rvt", pointcut = "logAspect()")
     public void after(JoinPoint joinPoint,Object rvt){
 
-
-        
         //用shiro 获取当前用户
         Subject subject = SecurityUtils.getSubject();
         User user =(User)subject.getSession().getAttribute("user");
@@ -93,7 +91,10 @@ public class LogAspect {
         LOGGER.info("类名 + 方法 : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         LOGGER.info("参数 : " + Arrays.toString(joinPoint.getArgs()));
         // 需要判断用户是登录状态下新建的用户还是直接在页面注册用户
-        LOGGER.info("当前登录人:"+ user.getUserName()); //当前登录人
-        LOGGER.info("当前登录人Id:"+ user.getId()); //当前登录人
+        if(!(targetName.equals("register"))){
+            LOGGER.info("当前登录人:"+ user.getUserName()); //当前登录人
+            LOGGER.info("当前登录人Id:"+ user.getId()); //当前登录人
+        }
+
     }
 }

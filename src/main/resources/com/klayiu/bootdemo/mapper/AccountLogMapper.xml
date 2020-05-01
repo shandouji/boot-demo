@@ -52,5 +52,16 @@
     <delete id="deleteAll">
         delete from auth_account_log;
     </delete>
+
+
+    <select id="getAll" resultType="com.klayiu.bootdemo.entity.AuthAccountLog">
+
+
+    </select>
+
+
+    <select id="findLogById" resultType="com.klayiu.bootdemo.entity.AuthAccountLog">
+        select a.* from auth_account_log a where a.id = #{id}
+    </select>
 </mapper>
     

@@ -21,4 +21,5 @@ public class BaseController {
     protected void login(AuthenticationToken token) {
         getSubject().login(token);
     }
+
 }
