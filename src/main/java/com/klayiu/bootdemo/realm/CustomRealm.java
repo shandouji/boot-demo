@@ -5,6 +5,7 @@ import com.klayiu.bootdemo.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
@@ -12,6 +13,8 @@ import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Set;
 
 
 /**
@@ -30,14 +33,14 @@ public class CustomRealm extends AuthorizingRealm {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomRealm.class);
 
     /**
-     * step 1. 从PrincipalCollection 中来获取登录的用户信息
      *
-     * step 2.利用登录的用户信息来当前用户的角色或者权限（可能需要查询数据库）
+     * Shiro  支持三种方式的授权
+     * 编程式
+     * 注解式
+     * JSP标签
      *
-     * 3.创建 SimpleAuthenticationInfo ，并设置其roles 属性
      *
      *
-     * 4 .SimpleAuthenticationInfo
      * @param principals
      * @return
      */
@@ -46,10 +49,21 @@ public class CustomRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         LOGGER.info("执行授权逻辑");
         User user = (User) SecurityUtils.getSubject().getPrincipal();
+        //step 1. 从PrincipalCollection 中来获取登录的用户信息
+
+        //step 2.利用登录的用户信息来当前用户的角色或者权限（可能需要查询数据库）
+
+        //step 3.创建 SimpleAuthenticationInfo ，并设置其roles 属性
+
+        //step 4 . 返回 SimpleAuthenticationInfo 对象
 
 
+        // 创建SimpleAuthorizationInfo , 并设置roles
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
-        return null;
+
+        //如果想在前台显示 欢迎xxx 登陆, 在前台页面使用  shiro 标签
+        return info;
     }
 
     /**
@@ -89,10 +103,10 @@ public class CustomRealm extends AuthorizingRealm {
      *          // step principal : 认证的实体信息，可以是UserName, 也可以是数据表对应的用户实体类对象。
      *          //step 6 realmName ,当前realm 对象的name,调用父类的getName() 方法即可。
      *
-    *           // 1> why 为什么用MD5 盐值加密 ？
-    *           // 2> 如何做到
-    *           // @ 1 doGetAuthenticationInfo 方法返回值创建SimpleAuthenticationInfo 对象, 需要使用比较复杂构造器。
-    *           // @ 2 ByteSource.Util.bytes 计算盐值
+     *           // 1> why 为什么用MD5 盐值加密 ？
+     *           // 2> 如何做到
+     *           // @ 1 doGetAuthenticationInfo 方法返回值创建SimpleAuthenticationInfo 对象, 需要使用比较复杂构造器。
+     *           // @ 2 ByteSource.Util.bytes 计算盐值
     *           // @ 3 盐值需要唯一， 一般情况下使用随机数，userId
     *           // @ 3 使用new suimpleHash() ,来计算盐值加密后的密码的值。
     *           // 现在这样写是不对的， 需要进行密码比对 ，upToken 前台传过来的方法，SimpleAuthenticationInfo 是从数据库中查询出来存到 SimpleAuthenticationInfo 里面

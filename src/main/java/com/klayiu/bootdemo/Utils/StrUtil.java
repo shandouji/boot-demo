@@ -5,10 +5,8 @@ package com.klayiu.bootdemo.Utils;
  * @create 2020-04-08 17:23
  *
  * 封装字符串处理工具
- * v1.0 版本
+ * 实时更新
  *
- * 注意: 功能不完善，暂时不强制使用
- * 同时集成apache commons langUtils
  */
 public class StrUtil {
 
@@ -26,7 +24,6 @@ public class StrUtil {
             if (strLen == 0) {
                 b = true;
             }
-
             for (int i = 0; i < strLen; i++) {
                 if (!Character.isWhitespace(str.charAt(i))) {
                     b = false;
@@ -109,5 +106,22 @@ public class StrUtil {
             i++;
         }
         return strOut;
+    }
+
+
+    /**
+     * 字符串转换成小数
+     * @param str
+     *          字符串 "3.14" 转换成 3.14
+     *          null 直接返回 0.0
+     * @return
+     */
+    public static double getDouble(String str){
+        try {
+            return Double.parseDouble(str);
+        }catch (Exception e){
+            e.getMessage();
+            return 0.0;
+        }
     }
 }

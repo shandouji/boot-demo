@@ -182,4 +182,9 @@ public class ShiroConfig {
 
         return filterRegistration;
     }*/
+
+
+
+    // 权限注解(可以用在controller 和 service 方法)
+
 }

@@ -1,16 +1,22 @@
 package com.klayiu.bootdemo.controller;
 
 import com.klayiu.bootdemo.annotation.Log;
+import com.klayiu.bootdemo.config.ActivitiConfig;
 import com.klayiu.bootdemo.response.ResultBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.repository.Deployment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.InputStream;
+import java.util.zip.ZipInputStream;
 
 /**
  * @author klayiu
@@ -31,11 +37,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "流程demo")
 public class ProcessController {
 
-    @Autowired
-    RuntimeService runtimeService;
+   // @Autowired
+   // ActivitiConfig activitiConfig;
 
-    @Autowired
-    TaskService taskService;
+
+    @GetMapping("/")
+    @ApiOperation(value = "流程部署zip方式")
+    public ResultBody deployWithZip(){
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("");
+        ZipInputStream zip = new ZipInputStream(inputStream);
+      //  Deployment deployment = activitiConfig.processEngine()
+        return new ResultBody();
+    }
 
 
     @PostMapping("/startProcess")
@@ -59,7 +72,7 @@ public class ProcessController {
     @ApiOperation(value = "完成任务")
     @Log
     public ResultBody completeTask(String taskId){
-        taskService.complete(taskId);
+       // taskService.complete(taskId);
         return new ResultBody();
     }
 

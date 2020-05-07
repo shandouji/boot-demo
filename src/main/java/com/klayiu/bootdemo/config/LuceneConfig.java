@@ -10,4 +10,5 @@ package com.klayiu.bootdemo.config;
  * 实现页面搜索日志
  */
 public class LuceneConfig {
+
 }

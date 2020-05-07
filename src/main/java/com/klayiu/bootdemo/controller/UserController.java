@@ -1,6 +1,7 @@
 package com.klayiu.bootdemo.controller;
 
 import com.klayiu.bootdemo.Utils.ExcelUtil;
+import com.klayiu.bootdemo.Utils.ExceptionUtil;
 import com.klayiu.bootdemo.Utils.Md5Util;
 import com.klayiu.bootdemo.Utils.ValidateUtil;
 import com.klayiu.bootdemo.annotation.Log;
@@ -95,6 +96,7 @@ public class UserController {
     @Log
     public ResultBody login(String userName,String passWord){
         Subject subject = SecurityUtils.getSubject();
+        //subject.isPermitted()
         String pwd = Md5Util.Md5Pwd(userName, passWord);
         LOGGER.info("前台密码加密之后"+pwd);
         UsernamePasswordToken token = new UsernamePasswordToken(userName,passWord);
@@ -103,7 +105,7 @@ public class UserController {
                 subject.login(token);
                 LOGGER.info("身份认证成功");
             } catch (AuthenticationException e) {
-                LOGGER.info("身份认证失败"+e.getCause() + e.getMessage());
+                LOGGER.info("身份认证失败"+e.getCause() + e.getMessage()+ExceptionUtil.getStackTrace(e));
             }
         return new ResultBody();
     }
