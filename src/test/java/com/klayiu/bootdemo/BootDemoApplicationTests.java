@@ -6,7 +6,10 @@ import com.klayiu.bootdemo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -15,8 +18,11 @@ class BootDemoApplicationTests {
     @Autowired
     UserService userService;
 
+    @Autowired
+    JavaMailSender javaMailSender;
+
     /**
-     *  µ¥Ôª²âÊÔµÄÒ»Ğ©·½·¨
+     *  ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ôµï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½
      */
 
     @Test
@@ -24,13 +30,20 @@ class BootDemoApplicationTests {
 
 
      /* List<User> list = userService.findAll();
-        //Ö§³Ölemada ±í´ïÊ½
+        //Ö§ï¿½ï¿½lemada ï¿½ï¿½ï¿½Ê½
         list.forEach(user -> list.size());
         System.out.println(list.toString());*/
 
-
+/*
         double aDouble = StrUtil.getDouble("null");
-        System.out.println(aDouble);
+        System.out.println(aDouble);*/
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setSubject("Springboot æ•´åˆé‚®ä»¶å‘é€");
+        msg.setText("è¿™æ˜¯é‚®ä»¶å†…å®¹");
+        msg.setFrom("2748116048@qq.com");
+        msg.setSentDate(new Date());
+        msg.setTo("liukai@propersoft.cn");
+        javaMailSender.send(msg);
 
     }
 

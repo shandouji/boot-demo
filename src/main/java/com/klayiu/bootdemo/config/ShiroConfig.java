@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author klay
+ * @author klayiu
  * @create 2020-04-11 20:33
  *
  *  spring boot 与shiro 整合 用于认证token，登录授权，权限

@@ -1,5 +1,6 @@
 package com.klayiu.bootdemo.controller;
 
+import com.klayiu.bootdemo.Utils.MailUtil;
 import com.klayiu.bootdemo.config.DruidConfig;
 import com.klayiu.bootdemo.entity.User;
 import com.klayiu.bootdemo.response.ResultBody;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 刘凯
+ * @author klayiu
  * @create 2020-04-11 9:02
  *
  * example demo
@@ -31,6 +32,9 @@ public class DemoController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    MailUtil mailUtil; //注入邮件工具类
+
     @ApiOperation(value = "根据Id查询用户列表")
     @GetMapping("/user")
     public User getUserbyId(String id){
@@ -40,13 +44,13 @@ public class DemoController {
         return user;
     }
 
-    /**
+  /*  *//**
      * 定时导出日志
      *
      * 写个小例子 , 真实项目中未必能用到 ,
      * 可直接去关系型数据库或者非关系型数据库进行查询
      * @return
-     */
+     *//*
 
     @GetMapping("/")
     @ApiOperation(value = "定时导出日志demo")
@@ -54,7 +58,16 @@ public class DemoController {
 
         return new ResultBody();
     }
+*/
+    /**
+     * 发送邮件方法
+     * @return
+     */
 
-
-
+    @PostMapping
+    @ApiOperation(value = "邮件发送")
+    public ResultBody sendMail(){
+        mailUtil.sendMail();
+        return new ResultBody();
+    }
 }

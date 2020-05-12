@@ -26,55 +26,55 @@
 
 
         <!--整合Swagger2-->
-        <dependency>
+     <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>2.9.2</version>
-        </dependency>
+     </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
-        </dependency>
+     </dependency>
 
         <!--整合 alibaba 数据库连接池-->
-        <dependency>
+     <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
-        </dependency>
+     </dependency>
 
 
         <!--整合shiro-->
-        <dependency>
+     <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
-        </dependency>
+     </dependency>
 
 
         <!--整合redis-->
-   <!--     <dependency>
+     <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>-->
+     </dependency>
 
         <!-- apache commons 工具类-->
-        <dependency>
+     <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
-        </dependency>
+     </dependency>
 
         <!-- 整合alibaba easyExcel -->
-        <dependency>
+     <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
             <version>2.1.6</version>
-        </dependency>
+     </dependency>
 
         <!--集成Mysql 数据库-->
-        <dependency>
+     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <scope>runtime</scope>
@@ -82,17 +82,17 @@
         </dependency>
 
         <!--整合Aop-->
-        <dependency>
+     <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
+     </dependency>
 
         <!-- 整合activiti-->
-        <dependency>
+     <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter</artifactId>
             <version>7.1.0.M2</version>
-        </dependency>
+     </dependency>
 
         <!-- 整合Security-->
   <!--      <dependency>
@@ -100,25 +100,62 @@
         <artifactId>spring-boot-starter-security</artifactId>
         </dependency>-->
 
-        <dependency>
+     <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
-        </dependency>
+     </dependency>
 
+        <!--集成javaMail-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
+        <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
 
+    <!--集成lucence-->
+
+    <!-- Lucence核心包 -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-core</artifactId>
+        <version>5.3.1</version>
+    </dependency>
+    <!-- Lucene查询解析包 -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-queryparser</artifactId>
+        <version>5.3.1</version>
+    </dependency>
+    <!-- 常规的分词（英文） -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-analyzers-common</artifactId>
+        <version>5.3.1</version>
+    </dependency>
+    <!--支持分词高亮  -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-highlighter</artifactId>
+        <version>5.3.1</version>
+    </dependency>
+    <!--支持中文分词  -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-analyzers-smartcn</artifactId>
+        <version>5.3.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

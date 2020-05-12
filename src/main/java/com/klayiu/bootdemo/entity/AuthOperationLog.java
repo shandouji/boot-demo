@@ -3,7 +3,7 @@ package com.klayiu.bootdemo.entity;
 import java.util.Date;
 
 /**
- * @author 刘凯
+ * @author klayiu
  * @create 2020-04-13 15:57
  *
  * 操作日志

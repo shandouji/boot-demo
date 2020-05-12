@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 刘凯
+ * @author klayiu
  * @create 2020-04-23 15:11
  *
  * 为避免日志文件太大,定时删除日志信息
@@ -32,5 +32,4 @@ public class LogTask {
         logService.deleteAll();
         logger.info("--------删除日志结束-------------");
     }
-
 }

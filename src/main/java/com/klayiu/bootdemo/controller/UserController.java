@@ -1,9 +1,6 @@
 package com.klayiu.bootdemo.controller;
 
-import com.klayiu.bootdemo.Utils.ExcelUtil;
-import com.klayiu.bootdemo.Utils.ExceptionUtil;
-import com.klayiu.bootdemo.Utils.Md5Util;
-import com.klayiu.bootdemo.Utils.ValidateUtil;
+import com.klayiu.bootdemo.Utils.*;
 import com.klayiu.bootdemo.annotation.Log;
 import com.klayiu.bootdemo.entity.User;
 import com.klayiu.bootdemo.response.ResultBody;
@@ -47,6 +44,10 @@ public class UserController {
 
     @Autowired
     ExcelUtil excelUtil;
+
+
+    @Autowired
+    RedisUtil redisUtil;
 
 
     /**
@@ -123,6 +124,10 @@ public class UserController {
     @GetMapping("/backPassWord")
     public ResultBody  backPassWord(){
         LOGGER.info("-----------通过邮件找回密码 ----------");
+       // Object o = redisUtil.get("name");
+
+        redisUtil.removeKey("name");
+       // System.out.println("redis 数据" +o.toString());
         return new ResultBody();
     }
 
