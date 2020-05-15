@@ -87,14 +87,15 @@ public class LogAspect {
         LOGGER.info("耗时：" + (System.currentTimeMillis() - startTime) + "毫秒");
         LOGGER.info("请求URL : " + request.getRequestURL().toString());
         LOGGER.info("HTTP 请求方法 : " + request.getMethod());
+        // 0:0:0:0:0:0:0:1 出现ip 是因为 ipv6 ,localhost
         LOGGER.info("IP地址: " + request.getRemoteAddr());
         LOGGER.info("类名 + 方法 : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         LOGGER.info("参数 : " + Arrays.toString(joinPoint.getArgs()));
         // 需要判断用户是登录状态下新建的用户还是直接在页面注册用户
-        if(!(targetName.equals("register"))){
+/*        if(!(targetName.equals("register"))){
             LOGGER.info("当前登录人:"+ user.getUserName()); //当前登录人
             LOGGER.info("当前登录人Id:"+ user.getId()); //当前登录人
-        }
+        }*/
 
     }
 }

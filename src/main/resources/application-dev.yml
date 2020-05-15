@@ -40,6 +40,12 @@ spring:
     port: 6379
     database: 0
     password:
+    # 配置rabbitmq 消息服务
+    #rabbitmq:
+    #host: 127.0.0.1
+    #port: 15673
+    #username: guest
+    #password: guest
 logging:
   level:
     root: info

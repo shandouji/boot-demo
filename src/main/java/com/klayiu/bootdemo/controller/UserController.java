@@ -45,9 +45,11 @@ public class UserController {
     @Autowired
     ExcelUtil excelUtil;
 
-
     @Autowired
     RedisUtil redisUtil;
+
+    @Autowired
+    MailUtil mailUtil;
 
 
     /**
@@ -67,7 +69,7 @@ public class UserController {
     @PostMapping("/register")
     @ApiOperation(value = "用户注册")
     @Log
-    public ResultBody add(User user){
+    public ResultBody add(User user) throws Exception {
         // step 1 需要校验手机号码是不是符合规则
         // step 2 验证邮箱是不是符合规则, 后面需要根据邮箱进行密码找回功能。
         user.setPassWord(Md5Util.Md5Pwd(user.getUserName(),user.getPassWord()));
@@ -76,6 +78,11 @@ public class UserController {
             return new ResultBody("请填写正确的电话号码");
         }
         if(userService.insert(user)){
+            long time = System.currentTimeMillis();
+            System.out.println(time);
+            mailUtil.sendSingleFileMail();
+          //  redisUtil.set("name","klayiu");
+            System.out.println(System.currentTimeMillis()-time);
             LogExeManager.getInstance().executeLogTask(LogTaskFactory.registerLog(String.valueOf(user.getId()),(short) 0, "用户添加成功"));
         }else{
             LogExeManager.getInstance().executeLogTask(LogTaskFactory.registerLog(String.valueOf(user.getId()), (short) 0, "用户添加失败"));
@@ -196,7 +203,8 @@ public class UserController {
         try {
             excelUtil.writeExcel(response,list,"字段"+System.currentTimeMillis(),"sheet1", User.class);
         }catch (Exception e){
-            e.printStackTrace();
+            ExceptionUtil.getStackTrace(e);
+            //e.printStackTrace();
         }
     }
 }

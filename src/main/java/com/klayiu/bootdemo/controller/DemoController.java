@@ -67,7 +67,7 @@ public class DemoController {
     @PostMapping
     @ApiOperation(value = "邮件发送")
     public ResultBody sendMail(){
-        mailUtil.sendMail();
+       // mailUtil.sendMail();
         return new ResultBody();
     }
 }
