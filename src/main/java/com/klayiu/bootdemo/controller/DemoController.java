@@ -15,6 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.time.LocalDate;
+
 /**
  * @author klayiu
  * @create 2020-04-11 9:02
@@ -41,6 +49,8 @@ public class DemoController {
         User user = userService.getUserById(id);
         // 输出内容在控制台上
         LOGGER.info("输出User"+user.toString());
+
+
         return user;
     }
 
@@ -70,4 +80,22 @@ public class DemoController {
        // mailUtil.sendMail();
         return new ResultBody();
     }
+
+    /**
+     * 写着玩，java 调用exe 程序
+     * @param args
+     */
+
+/*    public static void main(String[] args) {
+        System.out.println("java调用exe程序");
+        String flag = "F:\\QQ\\Bin\\QQ.exe";
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            runtime.exec(flag);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }*/
+
+
 }

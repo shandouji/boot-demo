@@ -1,4 +1,4 @@
-package com.klayiu.bootdemo.Aspect;
+package com.klayiu.bootdemo.aspect;
 
 import com.klayiu.bootdemo.entity.User;
 import org.apache.shiro.SecurityUtils;

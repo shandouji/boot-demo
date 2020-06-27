@@ -10,8 +10,12 @@ import java.util.Date;
  *
  * 角色
  *
+ * RBAC 权限模型（核心基于角色）
  *
  *
+ * @1 url 资源拦截
+ * @2 菜单级别权限
+ * @3 按钮级别权限
  *
  */
 public class Role extends BaseEntity {
